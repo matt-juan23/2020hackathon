@@ -114,7 +114,7 @@ def suburb():
 #######
 # login page
 ## pick consumer or business
-@app.route('/', methods=["GET"])
+@app.route('/')
 def home():
     # radio buttons
     return render_template("login.html")
