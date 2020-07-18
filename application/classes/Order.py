@@ -10,6 +10,7 @@ class Order:
         self.items = []
         self.shop = shop
         self.rider = None
+        self.id = shop.getOrderId()
 
     def addRider(self, rider):
         self.rider = rider
@@ -17,6 +18,7 @@ class Order:
     def addItem(self, item):
         self.items.append(item)
         self.totalPrice += item.price
+        self.shop.addOrder(self)
 
     def sendOrder(self):
         self.status = INTRANSIT

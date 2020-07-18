@@ -9,7 +9,13 @@ class Customer:
         self.orders = []
     
     def placeOrder(self, item, amount):
-        order = Order(self, "date", item.shop)
-        order.addItem(item)
-        item.shop.addOrder(order)
+        if amount > item.stock:
+            print("Unable to get stock")
+            return
+        shop = item.shop
+        order = Order(self, "date", shop)
+        for _ in range(amount):
+            order.addItem(item)
+        item.removeStock(amount)
+        #item.shop.addOrder(order)
         self.orders.append(order)

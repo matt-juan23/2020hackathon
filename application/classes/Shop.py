@@ -8,6 +8,12 @@ class Shop:
         self.address=address
         self.orders = []
         self.items = []
+        self.orderNum = 0
+
+    def getOrderId():
+        id = self.orderNum
+        self.orderNum += 1
+        return id
 
     def addOrder(self, order):
         self.orders.append(order)
