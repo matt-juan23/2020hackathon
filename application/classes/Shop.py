@@ -1,4 +1,4 @@
-from classes.utility import *
+from utility import *
 
 
 class Shop:
