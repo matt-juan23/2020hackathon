@@ -189,7 +189,7 @@ def items():
         }
     ]
     '''
-    res = [
+    items = [
         {
             "id": 0,
             "name": "Samsung 1TB SSD",
