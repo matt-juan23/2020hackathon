@@ -3,6 +3,10 @@ class Rider:
         self.id = id
         self.suburb = suburb
         self.orders = []
+
+    def acceptOrder(self, order):
+        self.orders.append(order)
+        order.addRider(this)
     
     def addOrder(self, order):
         self.order.append(order)
