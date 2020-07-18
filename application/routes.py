@@ -3,7 +3,6 @@ from flask import request, render_template, url_for, redirect, json
 
 ''' Import functions'''
 from application import app
-from application.models import Covid, Suburb
 
 
 from application import db
@@ -11,13 +10,13 @@ from application import db
 #######################################################
 #                 HealthView Routes                   #
 #######################################################
-
+'''
 @app.route('/search')
 def search():
     return render_template('search.html')
 
-@app.route('/', methods=['POST', 'GET'])
-def home():
+@app.route('/yee', methods=['POST', 'GET'])
+def hom():
 
     if request.method == "GET":
         try:
@@ -65,19 +64,12 @@ def admin():
         num_cases = data.get('num_cases')
         # find suburb in database and get suburb id
         suburb_data = Suburb.query.filter_by(name=suburb).all()
-
-        '''
-        Error Checking 
-        '''
         if suburb_data is None:
             return "invalid suburb or suburb doesnt exist"
         try:
             suburb_id = suburb_data[0].id
         except IndexError:
             return "invalid suburb or suburb doesnt exist"
-        '''
-        Turn string into datetime object
-        '''
         date_created = datetime.strptime(date_str, '%Y-%m-%d').date()
         new_covid = Covid(suburb_id=suburb_id, date_created=date_created, num_cases=num_cases)
         try:
@@ -118,14 +110,14 @@ def suburb():
         return render_template('suburb.html', suburb=suburb)
 
 
-
+'''
 #######
 # login page
 ## pick consumer or business
-@app.route('/')
+@app.route('/', methods=["GET"])
 def home():
     # radio buttons
-    return render_template("index.html")
+    return render_template("login.html")
 
 @app.route('/login', methods=["POST", "GET"])
 def admin():
