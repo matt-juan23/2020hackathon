@@ -268,7 +268,47 @@ def items():
 
 @app.route('/order')
 def orders():
-    return render_template("order.html")
+    '''
+    [
+        {
+            "id":,
+            "total":,
+            "date":,
+            "items":[]
+        }
+    ]
+    '''
+    res = [
+        {
+            "id": 4,
+            "total": "$118",
+            "date": "18/06/2020",
+            "items": ["Samsung 1TB SSD", "USB adapter", "1m HDMI Cable"]
+        },
+        {
+            "id": 3,
+            "total": "$600",
+            "date": "16/06/2020",
+            "items": ["Mechanical Keyboard", "4K monitor"]
+        },
+        {
+            "id": 2,
+            "total": "$120",
+            "items": ["200GB SanDisk MicroSD"]
+        },
+        {
+            "id": 1,
+            "total": "$350",
+            "items": ["Logitech Gaming Mouse", "Logitech Mouse Pad", "Computer Case"]
+        },
+        {
+            "id": 0,
+            "total": "$108",
+            "items"; ["Samsung 1TB SSD", "USB adapter"]
+        }
+    ]
+    return render_template("order.html", orders=res)
+
 
 '''
 @app.route('/items', methods=["POST","GET"])
