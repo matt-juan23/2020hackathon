@@ -4,9 +4,9 @@
 **Topic**
 Covid-19
 ## Built
-HTLM/CSS
-Python and Flask
-Adobe XD
+HTLM/CSS <br>
+Python and Flask <br>
+Adobe XD <br>
 MS Powerpoint
 ## Team members
 1. Matthew Juan (Back-end)
