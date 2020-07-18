@@ -14,9 +14,9 @@ class Shop:
 
     def getLists(self):
         dash = {}
-        dash["pending"] = getPending()
-        dash["in-transit"] = getInTransit()
-        dash["completed"] = getCompleted()
+        dash["pending"] = self.getPending()
+        dash["in-transit"] = self.getInTransit()
+        dash["completed"] = self.getCompleted()
 
         return dash
 
