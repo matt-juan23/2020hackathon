@@ -1,4 +1,5 @@
-import utility
+from classes.utility import *
+
 
 class Shop:
     def __init__(self, id, name, contact, address):
