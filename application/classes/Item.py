@@ -6,9 +6,9 @@ class Item:
         self.description = description
         self.stock = stock
     
-    def removeStock(amount):
+    def removeStock(self, amount):
         self.stock = self.stock - amount
 
-    def addStock(amount):
+    def addStock(self, amount):
         self.stock = self.stock + amount
-        
+    
