@@ -26,9 +26,7 @@
                     <li class="nav-item" role="presentation"><a class="nav-link" href="/profile"> <i class="fas fa-user"></i><span>Store Profile</span></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="/order"> <i class="fas fa-table"></i><span>Orders</span></a> 
                                                              <a class="nav-link" href="/items"><i class="fas fa-shopping-bag"></i><span>Items</span></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="/login"> <i class="far fa-user-circle"></i><span>Login</span></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="/register"> <i class="fas fa-user-circle"></i><span>Register</span></a></li>
-                </ul>
+                    </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
         </nav>
@@ -75,10 +73,22 @@
                         <div class="row">
                             <div class="col">
                                 <ul class="border rounded shadow-sm">
-                                    <li>#order number; (items in the order);&nbsp;</li>
-                                    <li>Item 2</li>
-                                    <li>Item 3</li>
-                                    <li>Item 4</li>
+                                    {% if orders | length < 1 %}
+                                    {% else %}  
+                                            {% for i in orders %}
+                                                {% if i.status == 0 %}
+                                                    <li>
+                                                        <b>Order ID:</b> {{i.id}} <br>
+                                                        <b>Items:</b>
+                                                            <ul>
+                                                            {% for j in i.order %}
+                                                                <li>{{j}}</li>
+                                                            {% endfor%}
+                                                            </ul>
+                                                    </li>
+                                                {% endif %}
+                                            {% endfor %}
+                                    {% endif %}
                                 </ul>
                             </div>
                         </div>
@@ -92,10 +102,22 @@
                         <div class="row">
                             <div class="col">
                                 <ul class="border rounded shadow-sm">
-                                    <li>Item 1</li>
-                                    <li>Item 2</li>
-                                    <li>Item 3</li>
-                                    <li>Item 4</li>
+                                    {% if orders | length < 1 %}
+                                    {% else %}  
+                                            {% for i in orders %}
+                                                {% if i.status == 1 %}
+                                                    <li>
+                                                        <b>Order ID:</b> {{i.id}} <br>
+                                                        <b>Items:</b>
+                                                            <ul>
+                                                            {% for j in i.order %}
+                                                                <li>{{j}}</li>
+                                                            {% endfor%}
+                                                            </ul>
+                                                    </li>
+                                                {% endif %}
+                                            {% endfor %}
+                                    {% endif %}
                                 </ul>
                             </div>
                         </div>
@@ -109,10 +131,22 @@
                         <div class="row">
                             <div class="col">
                                 <ul class="border rounded shadow-sm">
-                                    <li>Item 1</li>
-                                    <li>Item 2</li>
-                                    <li>Item 3</li>
-                                    <li>Item 4</li>
+                                    {% if orders | length < 1 %}
+                                    {% else %}  
+                                            {% for i in orders %}
+                                                {% if i.status == 2 %}
+                                                    <li>
+                                                        <b>Order ID:</b> {{i.id}} <br>
+                                                        <b>Items:</b>
+                                                            <ul>
+                                                            {% for j in i.order %}
+                                                                <li>{{j}}</li>
+                                                            {% endfor%}
+                                                            </ul>
+                                                    </li>
+                                                {% endif %}
+                                            {% endfor %}
+                                    {% endif %}
                                 </ul>
                             </div>
                         </div>
@@ -193,7 +227,7 @@
                             <li class="list-group-item">
                                 <div class="row align-items-center no-gutters">
                                     <div class="col mr-2">
-                                        <h6 class="mb-0"><strong>Lunch meeting</strong></h6><span class="text-xs">10:30 AM</span></div>
+                                        <h6 class="mb-0"><strong>Breakfast meeting</strong></h6><span class="text-xs">10:30 AM</span></div>
                                     <div class="col-auto">
                                         <div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="formCheck-1"><label class="custom-control-label" for="formCheck-1"></label></div>
                                     </div>
@@ -211,7 +245,7 @@
                             <li class="list-group-item">
                                 <div class="row align-items-center no-gutters">
                                     <div class="col mr-2">
-                                        <h6 class="mb-0"><strong>Lunch meeting</strong></h6><span class="text-xs">12:30 AM</span></div>
+                                        <h6 class="mb-0"><strong>Dinner meeting</strong></h6><span class="text-xs">12:30 AM</span></div>
                                     <div class="col-auto">
                                         <div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="formCheck-3"><label class="custom-control-label" for="formCheck-3"></label></div>
                                     </div>

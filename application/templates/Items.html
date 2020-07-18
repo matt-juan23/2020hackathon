@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -26,9 +25,7 @@
                     <li class="nav-item" role="presentation"><a class="nav-link" href="/profile"> <i class="fas fa-user"></i><span>Store Profile</span></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="/order"> <i class="fas fa-table"></i><span>Orders</span></a> 
                                                              <a class="nav-link" href="/items"><i class="fas fa-shopping-bag"></i><span>Items</span></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="/login"> <i class="far fa-user-circle"></i><span>Login</span></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="/register"> <i class="fas fa-user-circle"></i><span>Register</span></a></li>
-                </ul>
+                    </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
         </nav>
@@ -130,7 +127,7 @@
                                         class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>
                                         <a
                                             class="dropdown-item" role="presentation" href="#"><i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Activity log</a>
-                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>
+                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="/"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>
                     </div>
                     </li>
                     </ul>
@@ -138,14 +135,15 @@
             </nav>
             <div class="container-fluid">
                 <h3 class="text-dark mb-4">Items</h3>
+                    <h5 class="text-dark mb-6">Add Items</h5>
                 <div class="row">
                     <div class="col">
                         <form action="/items" method="POST">
-                            <input class="form-control" type="text" style="padding: 20px;margin: 13px;width: 872px;" placeholder="Name" id="name">
-                            <input class="form-control" type="text" style="padding: 20px;margin: 13px;width: 872px;" placeholder="Price per unit" id="ppr">
-                            <input class="form-control" type="text" style="padding: 20px;margin: 13px;width: 872px;" placeholder="stock" id="stock">
-                            <input class="form-control" type="text" style="padding: 20px;margin: 13px;width: 872px;" placeholder="size" id="size">
-                            <input class="form-control" type="text" style="padding: 47px;margin: 13px;width: 872px;" placeholder="description" id="description">
+                            <input class="form-control" type="text" style="padding: 20px;margin: 13px;width: 872px;" placeholder="Name" name="name">
+                            <input class="form-control" type="text" style="padding: 20px;margin: 13px;width: 872px;" placeholder="Price per unit" name="ppr">
+                            <input class="form-control" type="text" style="padding: 20px;margin: 13px;width: 872px;" placeholder="stock" name="stock">
+                            <input class="form-control" type="text" style="padding: 20px;margin: 13px;width: 872px;" placeholder="size" name="size">
+                            <input class="form-control" type="text" style="padding: 47px;margin: 13px;width: 872px;" placeholder="description" name="description">
                             <button class="btn btn-primary" type="submit" style="width: 140px;margin: 14px;">Add new item</button>
                         </form>
                     </div>
@@ -175,38 +173,27 @@
                                         <th>Description</th>
                                     </tr>
                                 </thead>
+                                {% if items | length < 1 %}
+                                {% else %}
                                 <tbody>
+                                    {% for i in items %}
                                     <tr>
-                                        <a>11232 </a>
-                                        <td>1</td>
-                                        <td>Chees</td>
-                                        <td>19</td>
-                                        <td>5</td>
-                                        <td>Large</td>
-                                        <td>Good with cheesses</td>
+                                        <td>{{i.id}}</td>
+                                        <td>{{i.name}}</td>
+                                        <td>${{i.price}}</td>
+                                        <td>{{i.stock}}</td>
+                                        <td>{{i.size}}</td>
+                                        <td>{{i.description}}</td>
                                     </tr>
+                                    {% endfor %}
                                 </tbody>
+                                {% endif %}
                                 <tfoot>
                                     <tr></tr>
                                 </tfoot>
                             </table>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6 align-self-center">
-                                <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
-                            </div>
-                            <div class="col-md-6">
-                                <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                                    <ul class="pagination">
-                                        <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
