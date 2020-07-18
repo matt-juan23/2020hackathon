@@ -123,12 +123,23 @@ def home():
 @app.route('/dashboard')
 def dashboard():
     # consumer or business 0 ir 1
+
     return render_template("index.html")
 
 
 @app.route('/profile')
 def profile():
-    return render_template("profile.html")
+    person = {
+        "username": "adammbq",
+        "email": "techfounder101@thebest.com.au",
+        "first_name": "DeMar",
+        "last_name": " Wang",
+        "address": "69, Full Send Ave",
+        "city": "Esshay",
+        "country": "Australia",
+        "invoice_signature": "Thanks for your business"
+    }
+    return render_template("profile.html", person=person)
 
 @app.route('/items')
 def items():
@@ -138,7 +149,26 @@ def items():
 def orders():
     return render_template("order.html")
 
-
+'''
+@app.route('/items', methods=["POST","GET"])
+def items():
+    if request.method == "POST":
+        data = request.form
+        new_item = {
+            "name": data.get("name"),
+            "ppr": data.get('ppr'),
+            "stock": data.get('stock'),
+            "size": data.get('size'),
+            description = data.get('description')
+        }
+        items.append(new_item)
+        return render_template("items.html", items=items)
+    else:
+        try:
+            return render_template('items.html', items=items)
+        except:
+            return "There was an issue loading the page."
+'''
 
 
 

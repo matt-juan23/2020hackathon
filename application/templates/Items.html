@@ -140,9 +140,14 @@
                 <h3 class="text-dark mb-4">Items</h3>
                 <div class="row">
                     <div class="col">
-                        <form><input class="form-control" type="text" style="padding: 20px;margin: 13px;width: 872px;" placeholder="Name"><input class="form-control" type="text" style="padding: 20px;margin: 13px;width: 872px;" placeholder="Price per unit">
-                            <input
-                                class="form-control" type="text" style="padding: 20px;margin: 13px;width: 872px;" placeholder="stock"><input class="form-control" type="text" style="padding: 47px;margin: 13px;width: 872px;" placeholder="description"><button class="btn btn-primary" type="submit" style="width: 140px;margin: 14px;">Add new item</button></form>
+                        <form action="/items" method="POST">
+                            <input class="form-control" type="text" style="padding: 20px;margin: 13px;width: 872px;" placeholder="Name" id="name">
+                            <input class="form-control" type="text" style="padding: 20px;margin: 13px;width: 872px;" placeholder="Price per unit" id="ppr">
+                            <input class="form-control" type="text" style="padding: 20px;margin: 13px;width: 872px;" placeholder="stock" id="stock">
+                            <input class="form-control" type="text" style="padding: 20px;margin: 13px;width: 872px;" placeholder="size" id="size">
+                            <input class="form-control" type="text" style="padding: 47px;margin: 13px;width: 872px;" placeholder="description" id="description">
+                            <button class="btn btn-primary" type="submit" style="width: 140px;margin: 14px;">Add new item</button>
+                        </form>
                     </div>
                 </div>
                 <div class="card shadow">
@@ -166,15 +171,18 @@
                                         <th>Name</th>
                                         <th>Price per unit</th>
                                         <th>Stock</th>
+                                        <th>Size</th>
                                         <th>Description</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <a>11232 </a>
                                         <td>1</td>
                                         <td>Chees</td>
                                         <td>19</td>
-                                        <td>Tokyo</td>
+                                        <td>5</td>
+                                        <td>Large</td>
                                         <td>Good with cheesses</td>
                                     </tr>
                                 </tbody>
