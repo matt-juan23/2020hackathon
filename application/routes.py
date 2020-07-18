@@ -122,9 +122,43 @@ def home():
 
 @app.route('/dashboard')
 def dashboard():
-    # consumer or business 0 ir 1
-
-    return render_template("index.html")
+    '''
+    [
+        {
+            "id":,
+            "items": [string],
+            "status": 0|1|2
+        }
+    ]
+    '''
+    res = [
+        {
+            "id": 0,
+            "items": ["Samsung 1TB SSD", "USB adapter"],
+            "status": 1
+        },
+        {
+            "id": 1,
+            "items": ["Logitech Gaming Mouse", "Logitech Mouse Pad", "Computer Case"],
+            "status": 0
+        },
+        {
+            "id": 2,
+            "items": ["200GB SanDisk MicroSD"],
+            "status": 2
+        },
+        {
+            "id": 3,
+            "items": ["Mechanical Keyboard", "4K monitor"],
+            "status": 0
+        },
+        {
+            "id": 4,
+            "items": ["Samsung 1TB SSD", "USB adapter", "1m HDMI Cable"],
+            "status": 1
+        }
+    ]
+    return render_template("index.html", orders=res)
 
 
 @app.route('/profile')
@@ -143,7 +177,94 @@ def profile():
 
 @app.route('/items')
 def items():
-    return render_template("items.html")
+    '''
+    [
+        {
+            "id":,
+            "name":,
+            "price":,
+            "stock":,
+            "description":,
+            "size":
+        }
+    ]
+    '''
+    res = [
+        {
+            "id": 0,
+            "name": "Samsung 1TB SSD",
+            "price": "$100",
+            "stock": 5,
+            "description": "Save all your data externally with this 1TB SSD",
+            "size": "small"
+        },
+        {
+            "id": 1,
+            "name": "USB adapter",
+            "price": "$8",
+            "stock": 20,
+            "description": "Connect iOS devices to standard USB connections",
+            "size": "small"
+        },
+        {
+            "id": 2,
+            "name": "Logitech Gaming Mouse",
+            "price": "$200",
+            "stock": 8,
+            "description": "High quality gaming mouse to power up your gaming setup",
+            "size": "small"
+        },
+        {
+            "id": 3,
+            "name": "Logitech Mouse Pad",
+            "price": "$70",
+            "stock": 15,
+            "description": "High quality gaming mouse pad to power up your gaming setup",
+            "size": "small"
+        },
+        {
+            "id": 4,
+            "name": "Computer Case",
+            "price": "$80",
+            "stock": 20,
+            "description": "Secure your PC with this computer case",
+            "size": "large"
+        },
+        {
+            "id": 5,
+            "name": "200GB SanDisk MicroSD",
+            "price": "$120",
+            "stock": 10,
+            "description": "Extra space for whatever you need",
+            "size": "small"
+        },
+        {
+            "id": 6,
+            "name": "Mechanical Keyboard",
+            "price": "$200",
+            "stock": 10,
+            "description": "Best keyboard for your everyday life",
+            "size": "medium"
+        },
+        {
+            "id": 7,
+            "name": "4K monitor",
+            "price": "$400",
+            "stock": 3,
+            "description": "High resolution monitor",
+            "size": "large"
+        },
+        {
+            "id": 8,
+            "name": "1m HDMI Cable",
+            "price": "$10",
+            "stock": 25,
+            "description": "HDMI Cable",
+            "size": "medium"
+        },
+        
+    ]
+    return render_template("items.html", items=res)
 
 @app.route('/order')
 def orders():
