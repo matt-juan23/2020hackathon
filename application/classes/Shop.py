@@ -1,33 +1,51 @@
 from utility import *
 
 class Shop:
-    def __init__(self, id, name, contact, address, data):
+    def __init__(self, id, name, contact, address):
         self.id=id
         self.name=name
         self.contact=contact
         self.address=address
         self.orders = []
         self.items = []
-        self.data = data
 
     def addOrder(self, order):
         self.orders.append(order)
 
-    def getPending(self, data):
-        return self.data.pending
-      
+    def getLists(self):
+        dash = {}
+        dash["pending"] = getPending()
+        dash["in-transit"] = getInTransit()
+        dash["completed"] = getCompleted()
+
+        return dash
+
+    def getPending(self):
+        pending = []
+        for x in self.orders:
+            if x.status == PENDING:
+                pending.append(x)
+        return pending
+
     def getInTransit(self):
-        return self.data.inTransit
+        intransit = []
+        for x in self.orders:
+            if x.status == INTRANSIT:
+                intransit.append(x)
+        return intransit
 
     def getCompleted(self):
-        return self.data.completed
+        completed = []
+        for x in self.orders:
+            if x.status == COMPLETED:
+                completed.append(x)
+        return completed
     
     def addItem(self, item):
         self.items.append(item)
     
     def fulfilOrder(self, order):
-        i=self.findOrder(order)
-        self.orders[i].setFulfilled
+        self.orders.remove(order)
 
     def findOrder(self, order):
         for i, x in enumerate(self.orders):
