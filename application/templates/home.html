@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Where can I go?</title>
+
+
+{% endblock %}
+
+{% block body %}
+<div class="container" styles="height: 100%">
+
+    <div style="text-align: center;">
+        <div class="form">
+            <form action="/" method="POST" >
+                <input type="text" name="suburb" id='suburb' style="width: 500px;">
+                <input type="submit" value="Search">
+            </form>
+        </div>
+    </div>
+
+    {% if empty < 0 %}
+
+    {% elif empty == 0 %}
+        <div style="padding-top: 50px;">
+            <h2>Invalid Suburb: {{ suburb_name }}</h2>
+            <h5>Please try 'bondi' (case sensitive)</h5>
+        </div>
+
+    {% else %}
+        <div style="padding-top: 50px;">
+            {% if sum >= 0 %}
+                <h2>Area: {{ suburb_name }}</h2>
+                <p>Rate of infection by COVID-19 in the past 14 days:</p>
+                    <ul>
+                        <li>Nationwide: 0.0004%</li>
+                        <li>{{ suburb_name }}: {{ rate }}</li>
+                    </ul>
+                    <div style="text-align: center; padding: 20px;">
+                        <h3>Chance of Infection:</h3>
+                        {% if suburb_name == 'Bondi' %}
+                            <h2>SOMEWHAT LIKELY <span style="color: orange">&#x25bc;</span></h2>
+                        {% endif %}
+                        {% if suburb_name == 'Bomaderry' %}
+                            <h2>HIGHLY UNLIKELY <span style="color: green">&#x25b2;</span></h2>
+                        {% endif %} 
+                        </h3>
+                    </div>
+            {% endif %}
+        </div>
+
+        <canvas id="line-chart" width="800" height="450"></canvas>
+        <script>
+            Chart.defaults.global.defaultFontColor = 'white';
+            new Chart(document.getElementById("line-chart"), {
+                type: 'line',
+                data: {
+                    labels: ['May 31', 'Jun 1', 'Jun 2', 'Jun 3', 'Jun 4', 'Jun 5', 'Jun 6', 'Jun 7', 
+                             'Jun 8' ,'Jun 9', 'Jun 10', 'Jun 11', 'Jun 12','Jun 13'],
+                    datasets: [{ 
+                        lineTension: 0,
+                        data: {{ data | tojson }},
+                        label: '{{ suburb_name }}',
+                        borderColor: 'pink',
+                        fill: false
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    title: {
+                        display: true,
+                        text: 'COVID-19 cases in {{ suburb_name }}'
+                    }
+                }
+            });
+        </script>  
+        </div>    
+
+    {% endif %}
+</div>  
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
