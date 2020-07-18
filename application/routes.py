@@ -116,3 +116,26 @@ def suburb():
     else:
         suburb = Suburb.query.filter_by().all()
         return render_template('suburb.html', suburb=suburb)
+
+
+
+#######
+# login page
+## pick consumer or business
+@app.route('/')
+def home():
+    # radio buttons
+    return render_template("index.html")
+
+@app.route('/admin', methods=["POST", "GET"])
+def admin():
+    return render_template("")
+
+@app.route('/dashboard', methods=["POST", "GET"])
+    ## consumer or business 0 ir 1
+    return render_template("dashboard.index")
+
+
+
+
+
