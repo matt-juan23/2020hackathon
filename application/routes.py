@@ -127,13 +127,15 @@ def home():
     # radio buttons
     return render_template("index.html")
 
-@app.route('/admin', methods=["POST", "GET"])
+@app.route('/login', methods=["POST", "GET"])
 def admin():
-    return render_template("")
+    return render_template("login.html")
 
 @app.route('/dashboard', methods=["POST", "GET"])
-    ## consumer or business 0 ir 1
+def dashboard():
+    # consumer or business 0 ir 1
     return render_template("dashboard.index")
+
 
 
 
