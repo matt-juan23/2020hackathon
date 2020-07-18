@@ -119,14 +119,27 @@ def home():
     # radio buttons
     return render_template("login.html")
 
-@app.route('/login', methods=["POST", "GET"])
-def admin():
-    return render_template("login.html")
 
-@app.route('/dashboard', methods=["POST", "GET"])
+@app.route('/dashboard')
 def dashboard():
     # consumer or business 0 ir 1
     return render_template("index.html")
+
+
+@app.route('/profile')
+def profile():
+    return render_template("profile.html")
+
+@app.route('/dashboard/items')
+def items():
+    return render_template("items.html")
+
+@app.route('/dashboard/order')
+def orders():
+    return render_template("order.html")
+
+
+
 
 
 
