@@ -126,7 +126,7 @@ def admin():
 @app.route('/dashboard', methods=["POST", "GET"])
 def dashboard():
     # consumer or business 0 ir 1
-    return render_template("dashboard.index")
+    return render_template("index.html")
 
 
 
