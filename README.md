@@ -1,5 +1,5 @@
 # Sendit
-## unsw-csesoc-hackathon-2020
+## 2020 UNSW CSESoc Annual Hackathon
 ## CSE Hackathon 2020
 **Topic**
 Covid-19
